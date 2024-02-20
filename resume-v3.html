@@ -8,50 +8,52 @@
         <script type="text/javascript" src="scripts/resume-v3.js" defer></script>
     </head>
     <header>
-        <h1>Resume and portfolio</h1>
-        <nav>
+        <h1 id="title-bar">Lisa Donohoo</h1>
+        <h3>Resume and Portfolio</h3>
+        <nav class="navigation-bar">
             <ul>
-                <li><a href="#profile-section">Profile</a></li>
-                <li><a href="#contact-section">Contact</a></li>
-                <li><a href="#projects-section">Projects</a></li>
-                <li><a href="#experience-section">Experience</a></li>
-                <li><a href="#education-certs-section">Education & Certifications</a></li>
-                <li><a href="#interests-section">Interests</a></li>
+                <li><a href="#profile-section">PROFILE</a></li>
+                <li><a href="#contact-section">CONTACT</a></li>
+                <li><a href="#projects-section">PROJECTS</a></li>
+                <li><a href="#experience-section">EXPERIENCE</a></li>
+                <li><a href="#education-certs-section">EDUCATION & CERTIFICATIONS</a></li>
+                <li><a href="#interests-section">INTERESTS</a></li>
             </ul>
         </nav>
     </header>
     <body>
         <main>
             <section id="profile-section">
-                <p>Energetic and motivated full stack developer<br><br> I master complex systems and ideas quickly,
+                <p>Energetic and motivated full stack developer.  I master complex systems and ideas quickly,
                     and love to be challenged by difficult problems.  I enjoy communicating and collaborating
                     with diverse groups of people, and have experience interfacing with both technical and non-technical
-                    clients.  I have nine years experience in older programming technologies but after raising a familiy have been retraining 
-                    and working on projects in Javascript, AWS, & HTML/CSS, and I love what I'm doing!
+                    clients.  I have nine years experience in older programming technologies but am currently enrolled in a 
+                    full-time, full-stack development program and have been persuing projects in Javascript, AWS, & HTML/CSS, 
+                    as well as AWS certifications.
             </p>
             </section>
             <section id="contact-section">
                 <h2><span class="screen-reader-only">Contact Section</span></h2>
-                <div id="photo"><img id="photoimg" src="images/headshot2.jpg" alt="picture of Lisa"></div>          
+                <div id="photo-container"><img id="photo" src="images/headshot2.jpg" alt="picture of Lisa"></div>          
                 <div id="name">LISA DONOHOO<br>programmer, anaylst, <br>maker
-                    of things<span class="tooltiptext">Click to download resume</span>
+                       of things<span class="tooltip">Click to download resume</span>
                 </div>
-                    <button class="phone"><img src="images/smartphone-call_15874.png" alt="phone icon">651.485.0579
-                        <span class="tooltiptext">Click to copy phone to clipboard</span>
-                    </button>
-                    <button class="email tooltip"><img src="images/email_2099199.png" alt="email icon">lisa.donohoo<wbr>@gmail.com
-                        <span class="tooltiptext">Click to copy email to clipboard</span>
-                    </button>
-                    <button class="linkedin" 
-                            onclick=" window.open('https://linkedin.com/in/lisa-donohoo', '_blank')">
-                        <img src="images/linkedin_1384014.png" alt="linkedin icon">linkedin.com/in/lisa-donohoo
-                    </button>
-                    <button class="github" onclick="window.open('https://github.com/ldonohoo', '_blank')">
-                        <img src="images/github_5968866.png" alt="github icon">github.com/<wbr>ldonohoo
-                    </button>
-                    <button class="website" onclick="window.open('https://lisa-donohoo.io', '_blank')">
-                        <img src="images/world-wide-web_1006771.png" alt="website icon">lisa-donohoo.io
-                    </button>
+                <button class="phone"><img class="icon" src="images/smartphone-call_15874.png" alt="phone icon">651.485.0579
+                    <span class="tooltip">Click to copy phone to clipboard</span>
+                </button>
+                <button class="email"><img class="icon" src="images/email_2099199.png" alt="email icon">lisa.donohoo<wbr>@gmail.com
+                    <span class="tooltip">Click to copy email to clipboard</span>
+                </button>
+                <button class="linkedin" 
+                        onclick=" window.open('https://linkedin.com/in/lisa-donohoo', '_blank')">
+                    <img class="icon" src="images/linkedin_1384014.png" alt="linkedin icon">linkedin.com/in/lisa-donohoo
+                </button>
+                <button class="github" onclick="window.open('https://github.com/ldonohoo', '_blank')">
+                    <img class="icon" src="images/github_5968866.png" alt="github icon">github.com/<wbr>ldonohoo
+                </button>
+                <button class="website" onclick="window.open('https://lisa-donohoo.io', '_blank')">
+                    <img class="icon" src="images/world-wide-web_1006771.png" alt="website icon">lisa-donohoo.io
+                </button>
             </section>
             <section id="education-certs-section">
                 <h2>Education and Certifications</h2>
@@ -136,6 +138,7 @@
                     </p>
                 </div>
             </section>
+
             <section id="experience-section">
                 <h2>Experience</h2>
                 <div class="exp-detail caselogic">PROGRAMMER ANALYST, <a title="Case Logic" href="https://www.caselogic.com" target="_blank">CASE LOGIC</a>: BOULDER, CO - 2001-2006

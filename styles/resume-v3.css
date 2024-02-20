@@ -60,6 +60,93 @@ Don't make animations, sliders, videos, or rapid movement start automatically.
     }
 }
 
-ul {
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#title-bar {
+    font-size: 5.2rem;
+    margin: 0;
+    padding: 0;
+ 
+}
+
+#title-bar span {
+    font-size:large;
+    margin: 0;
+
+}
+
+.navigation-bar ul {
     list-style-type: none;
+    font-size: 1.1rem;
+    width: 100%;
+    height: auto;
+    background-color: orange;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navigation-bar li {
+    display: inline-block;
+    padding: .2rem .2rem;
+    margin: 0 .1rem;
+    background-color: orange;
+}
+
+.navigation-bar a {
+    text-decoration: none;
+    color: black;
+}
+
+.navigation-bar a:hover {
+    background-color: black;
+    color: white;
+}
+
+#contact-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+}
+
+#contact-section button {
+    font-size: large;
+}
+
+#photo {
+    width: 15rem;
+    border: 1.3rem solid black;
+    border-radius: 50%;
+}
+
+#education-certs-section {
+    width: 20rem;
+    height: 20rem;
+    background-color: brown;
+    border-radius: 50%;
+    text-align: center;
+}
+
+#education-certs-section h2,
+#education-certs-section li
+ {
+    position: relative;
+    top: 3rem;
+    left: -2rem;
+    color: white;
+
+}
+
+
+/* hidden elements */
+
+.tooltip {
+    display: none;
+
 }
