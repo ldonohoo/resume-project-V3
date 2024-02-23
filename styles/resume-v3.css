@@ -1,0 +1,389 @@
+/* Lisa Donohoo   resume-v3.css   2-14-2024     */
+
+/*__________________________________________________
+   standard variables & root level properties
+  __________________________________________________*/
+
+  :root {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* colors */
+
+    --contrast-1: #566f98;
+    --contrast-2: #4285F4;
+    --contrast-3: rgb(40, 56, 174);
+    --accent-1: #5C2018;
+    --accent-2: #BC4639;
+    --accent-3: #D4A59A;
+    --accent-4: rgb(72, 46, 46);
+
+    --background-dark: rgb(28, 28, 28);
+    --background-alt-dark: rgb(52, 51, 51);
+    --background-light: white;
+    --background-alt-light: #F3E0DC;
+
+    --text-light1: white;
+    --text-light2: rgb(252, 244, 231);
+    --text-light3: rgb(255, 236, 205);
+    --text-dark1: black;
+    --text-dark2: rgb(154, 154, 154);
+    --text-dark3: rgb(183, 183, 183);
+
+
+
+    /* margins & padding */
+
+
+
+    --md-marg: 0.5rem; 
+
+
+
+}
+
+/*__________________________________________________
+    Initial media queries/accessibility 
+  __________________________________________________*/
+
+
+/* if screen is over a certain width, call wide display layer first
+    so it's first in precedence.  Otherwise, call narrrow first. */
+
+@media only screen and (min-width: 1000px) {
+    @layer wide-display;
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 600px)  {
+    @layer medium-wide-display;
+}
+
+@media only screen and (max-width: 600px) {
+    @layer narrow-display;
+}
+
+
+
+/* narrow display flexbox/grid stuff goes here... */
+@layer narrow-display {  
+    #visit-counter  {
+        background-color:  blue;
+    }
+}
+
+/* medium-wide display flexbox/grid stuff goes here... */
+@layer medium-wide-display {
+    #visit-counter  {
+        background-color: yellow;
+    }
+}
+
+/* wide display flexbox/grid stuff goes here... */
+@layer wide-display {
+    #visit-counter {
+        background-color:  green;
+
+    }
+
+}
+
+/* reduce motion mode for users who have this set 
+
+    (vestibular disorders, vision problems) 
+
+no preference- animation will apply if user doesn't have motion preference 
+
+Don't make animations, sliders, videos, or rapid movement start automatically.
+ Give an indicator of what movement will happen on the site when someone takes 
+ action. Allow the option to turn off any animation and movement at any 
+ point in the process.
+ 
+ so in animations themselves disable if no preference??
+
+*/
+
+@media (prefers-reduced-motion) {
+    footer {
+        color: purple;
+    }
+}
+
+
+/* if user has dark mode set on their browser use dark color scheme */
+@media  (prefers-color-scheme: dark) {
+    body {
+
+        --main-text-color: var(--text-dark2);
+        --alt1-text-color: var(--text-dark1);
+        --alt2-text-color: var(--text-dark3);
+        --main-background-color: var(--background-dark);
+        --alt-background-color: var(--background-alt-dark);
+        
+        background-color: var(--main-background-color);
+        color: var(--main-text-color);
+    }
+
+
+}
+
+/* if user does not have dark mode set, use light */
+@media  not (prefers-color-scheme: dark) {
+    body {
+        --main-text-color: var(--text-dark1);
+        --alt1-text-color: var(--text-light1);
+        --alt2-text-color: var(--text-dark2);
+        --background-color: var(--background-light);
+        --alt-background-color: var(--background-alt-light);
+
+        background-color: var(--background-light);
+        color: var(--main-text-color);
+    }
+    #interest-section {
+        background-color: orangered;
+    }
+}
+
+/* 'hide' content off page for sighted users */
+.screen-reader-only {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+
+
+
+
+/*__________________________________________________
+   main property section
+  __________________________________________________*/
+
+
+/* header */
+
+header {
+    position: sticky;
+    top: 0rem;
+    background-color: var(--main-background-color);
+}
+
+#title-bar {
+    font-size: 4.2rem;
+    margin: 0;
+    padding-left: 2rem;
+    color: var(--main-text-color);
+}
+
+#title-bar span {
+    position: relative;
+    font-size: 1.5rem;
+    padding-left: .5rem;
+    font-style: italic;
+    font-family:  'Times New Roman', serif;
+}
+
+#visit-counter {
+    position: fixed;
+    top: 6rem;
+    left: 25rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 0.5rem solid var(--accent-1);
+}
+
+.navigation-bar ul {
+    list-style-type: none;
+    font-size: 1.1rem;
+    width: 100%;
+    height: auto;
+    background-color: var(--accent-2);
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding-left: 3rem;
+}
+
+.navigation-bar li {
+    display: inline-block;
+    padding: .2rem .8rem;
+    margin: 0 .1rem;
+    background-color: var(--accent-2);
+}
+
+.navigation-bar a {
+    text-decoration: none;
+    color: var(--alt1-text-color);
+}
+
+#style-curve {
+    display: block;
+    position: relative;
+    width: 29.7%;
+    z-index: -1;
+}
+
+/* body */
+
+/*-----*/
+
+body {
+    background-color: var(--alt-background-color);
+}
+
+#profile-section {
+    position: relative;
+    border: .1rem solid transparent;
+    border-radius: .5rem;
+    outline: 1.1rem solid var(--accent-2);
+    margin: 1rem 0 0 30%;
+    width: 68%;
+    bottom: 3.2rem;
+    background-color: var(--main-background-color);
+    z-index: -1;
+}
+
+.profile {
+    font-size: large;
+    padding: .3rem 1.5rem;
+    text-align: center;
+    color: var(--alt-text-color);
+}
+
+/*-----*/
+#contact-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: .3rem;
+    width: 10%;
+    bottom: 20rem;
+    left: 3rem;
+}
+
+.photo-container {
+    position: relative;
+}
+
+#photo {
+    width: 10rem;
+    border: 1.3rem solid var(--accent-1);
+    border-radius: 50%;
+    rotate: -15deg;
+}
+
+#contact-section button {
+    border: 1rem solid var(--accent-1);
+    border-radius: 50%;
+    font-size: .8rem;
+    text-align: center;
+    padding-bottom: 1rem;
+    background-color: var(--accent-3);
+    color: var(--alt1-text-color)
+}
+
+.icon {
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+    padding: .2rem .2rem;
+}
+
+.contact-linkage-graphic {
+    position: relative;
+    top: -45rem;
+    left: 5.74rem;
+    width: .1rem;
+    height: 40rem;
+    border: .6rem solid var(--accent-2);
+    background-color: var(--accent-2);
+    z-index: -1;
+}
+
+/*-----*/
+#education-certs-section {
+    width: 20rem;
+    height: 20rem;
+    background-color: var(--accent-2);
+    border-radius: 50%;
+    text-align: center;
+}
+
+#education-certs-section h2,
+#education-certs-section li
+ {
+    position: relative;
+    top: 3rem;
+    left: -2rem;
+    color: var(--main-text-color);
+
+}
+
+/* footer */
+
+
+
+
+
+
+/*__________________________________________________
+   animations & hovers
+  __________________________________________________*/
+
+  .navigation-bar a:hover {
+    background-color: var(--main-text-highlight);
+    color: var(--main-text-color);
+}
+
+
+
+/*__________________________________________________
+   hidden elements
+  __________________________________________________*/
+
+.tooltip {
+    display: none;
+
+}
+
+
+
+
+/*__________________________________________________
+   misc junk not yet used repo
+  __________________________________________________
+
+
+  concave curve psuedoelement method:
+
+
+#curved-corner-topright:before {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+  }
+#curved-corner-topright:before {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+  }
+#curved-corner-topright:before {
+    top: 0;
+    right: 0;
+    box-shadow: 50px -50px 0 0 red;
+  }
+
+
+
+
+
+  */

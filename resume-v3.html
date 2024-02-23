@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Lisa Donohoo: Resume and Portfolio</title>
+        <link rel="stylesheet" href="styles/resume-v3.css">
+        <script type="text/javascript" src="scripts/resume-v3.js" defer></script>
+     <!-- textpath examples::::::::
+        d="M 5,10
+        A 5 5 180 1 1 20,10" /> 
+        <svg viewBox="0 0 100 100">
+                <path
+                id="arcpath"
+                fill="none"
+                stroke="red"
+                d="M 5 10 Q 25 10 180 100 T 350 100 T 520 100 T 690 100" />
+            <text>
+               <textPath href="#arcpath">Wallabys are not round but this text should be!</textPath>
+            </text>
+        </svg>
+        <svg viewBox="0 0 100 100">
+         
+            <defs> 
+            <path
+              id="MyPath"
+              fill="none"
+              stroke="red"
+              d="M10,90 Q90,90 90,45 Q90,10 50,10 Q10,10 10,40 Q10,70 45,70 Q70,70 75,50" />
+            </defs>
+            <text>
+              <textPath href="#MyPath">Quick brown fox jumps over the lazy dog.</textPath>
+            </text>
+        </svg>
+    -->
+    </head>
+    <header>
+        <h1 id="title-bar">Lisa Donohoo<span><br>Resume and Portfolio</span></h1>
+        <div id="visit-counter"></div>
+        <nav class="navigation-bar">
+            <ul>
+                <li><a href="#profile-section">PROFILE</a></li>
+                <li><a href="#contact-section">CONTACT</a></li>
+                <li><a href="#projects-section">PROJECTS</a></li>
+                <li><a href="#experience-section">EXPERIENCE</a></li>
+                <li><a href="#education-certs-section">EDUCATION & CERTIFICATIONS</a></li>
+                <li><a href="#interests-section">INTERESTS</a></li>
+            </ul>
+        </nav>
+    </header>
+    <body>
+        <main>
+            <div id="style-curve" >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 7">
+                        <path d="M 0 -1 C 29 0 37 2 37 7" vector-effect="non-scaling-stroke"
+                        stroke="#BC4639" stroke-width="1rem" fill="none" />
+                </svg>
+            </div>
+            <section id="profile-section">
+                <p class="profile">Energetic and motivated full stack developer!
+                    <br><br>I master complex systems and ideas quickly, and love 
+                    to be challenged by difficult problems. I enjoy communicating 
+                    and collaborating with diverse groups of people, and have 
+                    experience interfacing with both technical and non-technical
+                    clients.<br><br>I have eight years experience in older
+                    programming technologies but am currently enrolled in a 
+                    full-time, full-stack development program and have been
+                    pursuing projects in Javascript, AWS, & HTML/CSS, as well 
+                    as AWS certifications.
+                </p>
+            </section>
+            <section id="contact-section">
+                <h2><span class="screen-reader-only">Contact Section</span></h2>
+                <div id="photo-container"><img id="photo" src="images/headshot2.jpg"
+                     alt="picture of Lisa"></div>          
+                </div>
+                <button class="phone"><img class="icon"
+                        src="images/smartphone-call_15874.png" alt="phone icon"><br>651.485.0579
+                        <span class="tooltip">Click to copy phone to clipboard</span>
+                </button>
+                <button class="email"><img class="icon" src="images/email_2099199.png" 
+                        alt="email icon"><br>lisa.donohoo<wbr>@gmail.com
+                    <span class="tooltip">Click to copy email to clipboard</span>
+                </button>
+                <button class="linkedin" 
+                        onclick="window.open('https://linkedin.com/in/lisa-donohoo', '_blank')">
+                    <img class="icon" src="images/linkedin_1384014.png" 
+                        alt="linkedin icon"><br>linkedin.com/in/lisa-donohoo
+                </button>
+                <button class="github" 
+                        onclick="window.open('https://github.com/ldonohoo', '_blank')">
+                    <img class="icon" src="images/github_5968866.png"
+                         alt="github icon"><br>github.com/<wbr>ldonohoo
+                </button>
+                <button class="website" 
+                        onclick="window.open('https://lisa-donohoo.io', '_blank')">
+                        <img class="icon" src="images/world-wide-web_1006771.png" 
+                             alt="website icon"><br>lisa-donohoo.io
+                </button>
+                <div class="contact-linkage-graphic"></div>
+            </section>
+            <section id="education-certs-section">
+                <h2>Education and Certifications</h2>
+                <ul>
+                    <li>Prime Digital Academy, full-stack development,
+                        Feb 2024-current</li>
+                    <li>AWS Cloud Practitioner CLF-C02, Feb 2024</li>
+                    <li>University of Minnesota (Twin Cities), 
+                        Bachelor of Science in Computer Science</li>
+                </ul>   
+            </div>  
+            <section id="projects-section">
+                <h2>Projects go here...</h2>
+            </section>
+            <section id="skill-section">
+                <h2>Skills</h2>
+                <div class="skill tech-skill">
+                    <h3>JavaScript</h3>
+                    <p>Intermediate Javascript including factory functions
+                        & classes, IFEEs, currying, promises, etc.
+                    </p>
+                </div>
+                <div class="skill tech-skill">
+                    <h3>HTML/CSS</h3>
+                    <p>Comfortable with HTML and Css, including responsive
+                        design, accessibility, simple animations and transforms.
+                    </p>
+                </div>
+                <div class="skill tech-skill">
+                    <h3>AWS</h3>
+                    <p>Certified Cloud Practitioner CLF-C02 (Feb 2024), 
+                        currently working on Solutions Architect Associate
+                        (SAA-C03) and the cloud resume challenge.  Goal to
+                        achieve Developer Associate (DVA-C02) by the end of 
+                        year.
+                    </p>
+                </div>
+                <div class="skill tech-skill">
+                    <h3>SQL</h3>
+                    <p>SQL experience creating scripts, 
+                        troubleshooting problems, quick customer
+                        inquiries, creating test data sets,
+                        creating reports and updating live data
+                        as part of incidents or planned updates.
+                    </p>
+                </div>
+                <div class="skill tech-skill">
+                    <h3>IBM midrange/AS400/iSeries</h3>
+                    <p>IBM midrange system, also known as AS/400 or 
+                        more recently IBM Series i. I have experience
+                        with the iSeries OS, database (DB2), 
+                        command language (CLLE), programming 
+                        languages (RPGLE/RPGfree and limited COBOL),
+                        and general system maintenance, backups,
+                        optimization and updates. 
+                    </p>
+                </div>
+                <div class="skill tech-skill">
+                    <h3>EDI</h3>
+                    <p>Experience setting up and maintaining EDI 
+                        systems interfacing major retailers. Experience
+                        troubleshooting and resolving EDI issues quickly.
+                    </p>
+                </div>
+                <div class="skill soft-skill">
+                    <h3>Application Development</h3>
+                    <p>Experience in end-to-end software development
+                        from business needs and requirements to roll-out.
+                    </p>
+                </div>
+                <div class="skill soft-skill">
+                    <h3>Application Support</h3>
+                    <p>Lots of experience with application support,
+                        including supporting other international
+                        programmers writing location-specific 
+                        enhancements. Responsive and interface well
+                        with end-users and managment alike.
+                    </p>
+                </div>
+                <div class="skill soft-skill">
+                    <h3>Defining Requirements</h3>
+                    <p>Extensive experience working with end-users and 
+                        management developing concise requirements. 
+                        Experience defining scope in real-world language
+                        and setting clear requirements and expectations 
+                        to minimize 'feature-creep'. Knowledge of Gherkin.
+                    </p>
+                </div>
+            </section>
+            <section id="experience-section">
+                <h2>Experience</h2>
+                <div class="exp-detail caselogic">PROGRAMMER ANALYST, <a title="Case Logic" href="https://www.caselogic.com" 
+                    target="_blank">CASE LOGIC</a>: BOULDER, CO - 2001-2006
+                    <p>End-to-end development on IBM iSeries in RPGLE / 
+                        CLLE with RPG free and embedded SQL. EDI development and
+                        troubleshooting. Maintenance and process improvements, 
+                        large releases and projects. Worked closely with users,
+                        differing departments, and management. Interfaced with 
+                        SYNON code, used Turnover, ROBOT, DBU, WDSC (older 
+                        version of RDi - Rational Development for i)
+                    </p>
+                </div>
+                <div class="exp-detail cargil3">FREELANCE SOFTWARE ENGINEER, 
+                    <a title="Cargill Animal Nutrition Divition" 
+                    href="https://www.cargill.com/animal-nutrition" 
+                    target="_blank">CARGILL</a>: MINNETONKA, MN - 2001
+                <p>Short term contract work after company (Cargill) reached 
+                    out. RPGLE and CLLE development, troubleshooting and maintenance.
+                </p>
+                </div>
+                <div class="exp-detail cargill2">CONSULTANT/PROGRAMMER ANALYST, <a 
+                    title="Cargill Animal Nutrition Divition" 
+                    href="https://www.cargill.com/animal-nutrition" 
+                    target="_blank">CARGILL</a>: MINNETONKA, MN - 1999-2000
+                    <p>Short term Y2K contract work after company (Cargill)
+                         reached out. Analyzed RPGLE and CLLE code for vulnerabilities,
+                         documented and prepared solutions.
+                    </p>
+                </div>
+                <div class="exp-detail cargill1">SOFTWARE ENGINEER, 
+                    PROJECT TECHNICAL LEAD, (KEANE) <a title="Cargill Animal Nutrition Divition"
+                     href="https://www.cargill.com/animal-nutrition" target="_blank">CARGILL</a>
+                     : MINNETONKA, MN - 1995-1999
+                    <p>End-to-end development in RPGLE, RPG free with CLLE. 
+                        Responsible for development and maintenance of a 
+                        manufacturing and accounting system to support worldwide    
+                        operations in Cargill's Animal Nutrition division. 
+                        Worked directly with Accounting and Management as well
+                        as users across the globe. Advised and assisted 
+                        technical programmers in Europe, Asia and South 
+                        America with problems, updates and enhancements. 
+                        Responsible for development from user requirements
+                        to implementation worldwide. System interface to 
+                        ERP JDEdwards, used ROBOT, Aldon, DBU. 
+                    </p>
+                <p>Last two years spent as a project manager/technical team 
+                    lead for consulting group in addition to all other
+                duties.
+                </p>
+                </div>
+            </section>
+            <section id="interests-section">
+                <h2><span class="screen-reader-only">Interests</span></h2>
+                <summary>When not playing with technology, you may find me...</summary>
+                <ul>
+                    <li>Mountain biking</li>
+                    <li>Hiking & camping</li>
+                    <li>Snowboarding</li>
+                    <li>Cooking</li>
+                    <li>Woodworking</li>
+                    <li>Playing disc golf poorly</li>
+                </ul>
+            </section>
+        </body>
+
+    </main>
+    <footer>
+        <h2><span class="screen-reader-only">Copyright and credit information</span></h2>
+        <div class="copyright"><sup>&copy</sup>Lisa Donohoo 2023</h5>
+        <div class="credits"> Icons used with permission of <a title="Freepik"
+             href="https://www.freepik.com" target="_blank"><span>Freepik</span></a></div>
+    </footer>
+</html>
