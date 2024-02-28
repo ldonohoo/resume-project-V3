@@ -12,20 +12,24 @@
     --contrast-1: #566f98;
     --contrast-2: #4285F4;
     --contrast-3: rgb(40, 56, 174);
-    --accent-1: #5C2018;
+    --contrast-4: #485365;
+    --accent-1: #4c1b14;
     --accent-2: #BC4639;
     --accent-3: #D4A59A;
     --accent-4: rgb(72, 46, 46);
+    --accent-5: #7a2d25;
 
-    --background-dark: rgb(28, 28, 28);
-    --background-alt-dark: rgb(52, 51, 51);
+    --background-dark: rgb(36, 36, 36); 
+    --background-alt1-dark: rgb(22, 21, 21);
+    --background-alt2-dark: rgb(52, 51, 51);
     --background-light: white;
-    --background-alt-light: #F3E0DC;
+    --background-alt1-light: #F3E0DC;
+    --background-alt2-light: grey;
 
     --text-light1: white;
     --text-light2: rgb(252, 244, 231);
     --text-light3: rgb(255, 236, 205);
-    --text-dark1: black;
+    --text-dark1: rgb(0, 0, 0);
     --text-dark2: rgb(154, 154, 154);
     --text-dark3: rgb(183, 183, 183);
 
@@ -109,15 +113,16 @@ Don't make animations, sliders, videos, or rapid movement start automatically.
 
 
 /* if user has dark mode set on their browser use dark color scheme */
-@media  (prefers-color-scheme: dark) {
+@media  not (prefers-color-scheme: dark) {
     body {
 
         --main-text-color: var(--text-dark2);
         --alt1-text-color: var(--text-dark1);
         --alt2-text-color: var(--text-dark3);
         --main-background-color: var(--background-dark);
-        --alt-background-color: var(--background-alt-dark);
-        
+        --alt1-background-color: var(--background-alt1-dark);
+        --alt2-background-color: var(var(--background-alt2-dark))
+
         background-color: var(--main-background-color);
         color: var(--main-text-color);
     }
@@ -126,15 +131,16 @@ Don't make animations, sliders, videos, or rapid movement start automatically.
 }
 
 /* if user does not have dark mode set, use light */
-@media  not (prefers-color-scheme: dark) {
+@media  (prefers-color-scheme: dark) {
     body {
         --main-text-color: var(--text-dark1);
         --alt1-text-color: var(--text-light1);
         --alt2-text-color: var(--text-dark2);
-        --background-color: var(--background-light);
-        --alt-background-color: var(--background-alt-light);
+        --main-background-color: var(--background-light);
+        --alt1-background-color: var(--background-alt1-light);
+        --alt2-background-color: var(--background-alt2-light);
 
-        background-color: var(--background-light);
+        background-color: var(--main-background-light);
         color: var(--main-text-color);
     }
     #interest-section {
@@ -143,16 +149,15 @@ Don't make animations, sliders, videos, or rapid movement start automatically.
 }
 
 /* 'hide' content off page for sighted users */
+
 .screen-reader-only {
     position:absolute;
     left:-10000px;
     top:auto;
-    width:1px;
-    height:1px;
+    width: 0.1px;
+    height: 0.1px;
     overflow:hidden;
 }
-
-
 
 
 
@@ -160,14 +165,35 @@ Don't make animations, sliders, videos, or rapid movement start automatically.
    main property section
   __________________________________________________*/
 
+body {
+    margin: 0;
+}
 
 /* header */
 
 header {
     position: sticky;
     top: 0rem;
-    background-color: var(--main-background-color);
+    background-color: var(--alt1-background-color);
+    z-index: +1;
 }
+
+#config-bar {
+    height: 1.7rem;
+    width: 100%;
+    background-color: var(--contrast-1);
+}
+
+#light-dark-mode, #reduced-motion {
+    position: relative;
+    border: .1rem solid black;
+    border-radius: 50%;
+    background-color: var(--contrast-4);
+    color: var(--text-dark3);
+    left: 90%;
+    box-shadow: .1rem .1rem .3rem black;
+}
+
 
 #title-bar {
     font-size: 4.2rem;
@@ -197,9 +223,8 @@ header {
 .navigation-bar ul {
     list-style-type: none;
     font-size: 1.1rem;
-    width: 100%;
     height: auto;
-    background-color: var(--accent-2);
+    background-color: var(--accent-5);
     display: flex;
     flex-wrap: wrap;
     margin: 0;
@@ -210,7 +235,7 @@ header {
     display: inline-block;
     padding: .2rem .8rem;
     margin: 0 .1rem;
-    background-color: var(--accent-2);
+    background-color: var(--accent-5);
 }
 
 .navigation-bar a {
@@ -222,7 +247,7 @@ header {
     display: block;
     position: relative;
     width: 29.7%;
-    z-index: -1;
+
 }
 
 /* body */
@@ -230,19 +255,19 @@ header {
 /*-----*/
 
 body {
-    background-color: var(--alt-background-color);
+    background-color: var(--main-background-color);
 }
 
 #profile-section {
     position: relative;
     border: .1rem solid transparent;
     border-radius: .5rem;
-    outline: 1.1rem solid var(--accent-2);
-    margin: 1rem 0 0 30%;
+    outline: 1.1rem solid var(--accent-5);
+    margin: 1rem 5rem 0 30%;
     width: 68%;
     bottom: 3.2rem;
     background-color: var(--main-background-color);
-    z-index: -1;
+
 }
 
 .profile {
@@ -253,36 +278,44 @@ body {
 }
 
 /*-----*/
+
+
 #contact-section {
     position: relative;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap: .3rem;
-    width: 10%;
+    flex-wrap:wrap;
+    gap: .6rem;
     bottom: 20rem;
-    left: 3rem;
 }
 
-.photo-container {
+
+#photo { 
     position: relative;
-}
-
-#photo {
-    width: 10rem;
     border: 1.3rem solid var(--accent-1);
     border-radius: 50%;
+    width: 10rem; 
     rotate: -15deg;
+    box-shadow: .5rem .5rem .8rem black;
+    left: -3rem;
+    top: -3.7rem;
 }
+
 
 #contact-section button {
     border: 1rem solid var(--accent-1);
+    width: 9rem;
+    max-width: 12rem;
+    min-width: 0;
+    max-height: 10rem;
+    height:fit-content;
     border-radius: 50%;
     font-size: .8rem;
     text-align: center;
     padding-bottom: 1rem;
     background-color: var(--accent-3);
-    color: var(--alt1-text-color)
+    color: var(--alt1-text-color);
+    box-shadow: .5rem .5rem .8rem black;
 }
 
 .icon {
@@ -295,8 +328,9 @@ body {
 .contact-linkage-graphic {
     position: relative;
     top: -45rem;
-    left: 5.74rem;
+    left: 4rem;
     width: .1rem;
+    min-width: 0rem;
     height: 40rem;
     border: .6rem solid var(--accent-2);
     background-color: var(--accent-2);
@@ -305,23 +339,42 @@ body {
 
 /*-----*/
 #education-certs-section {
+    position: relative;
     width: 20rem;
     height: 20rem;
+    bottom: 96rem; 
+    left: 18rem;
     background-color: var(--accent-2);
     border-radius: 50%;
-    text-align: center;
+    margin: 0;
 }
 
 #education-certs-section h2,
 #education-certs-section li
  {
     position: relative;
-    top: 3rem;
-    left: -2rem;
-    color: var(--main-text-color);
-
+    color: var(--alt1-text-color);
+    text-align: center;
+    padding: 3%;
+    list-style-type: none;
 }
 
+/*-----*/
+#projects-section {
+    position: relative;
+    bottom: 5rem;
+    left: 30rem;
+    border: 1rem solid var(--alt1-background-color);
+    border-radius: 50%;
+    height: 20rem;
+    width: 20rem;
+    background-color: var(--contrast-1);
+    align-content: center;
+}
+/*-----*/
+/*-----*/
+/*-----*/
+/*-----*/
 /* footer */
 
 
@@ -334,10 +387,14 @@ body {
   __________________________________________________*/
 
   .navigation-bar a:hover {
-    background-color: var(--main-text-highlight);
     color: var(--main-text-color);
 }
 
+#config-bar button:hover {
+    background-color: var(--contrast-2);
+    color: var(--alt1-text-color);
+    scale: 1.2;
+}
 
 
 /*__________________________________________________

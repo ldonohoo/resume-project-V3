@@ -35,6 +35,10 @@
     -->
     </head>
     <header>
+        <div id="config-bar">
+            <button id="reduced-motion" type="button">motion</button>
+            <button id="light-dark-mode" type="button">mode</button>
+        </div>
         <h1 id="title-bar">Lisa Donohoo<span><br>Resume and Portfolio</span></h1>
         <div id="visit-counter"></div>
         <nav class="navigation-bar">
@@ -53,7 +57,7 @@
             <div id="style-curve" >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 7">
                         <path d="M 0 -1 C 29 0 37 2 37 7" vector-effect="non-scaling-stroke"
-                        stroke="#BC4639" stroke-width="1rem" fill="none" />
+                        stroke="#7a2d25" stroke-width="1rem" fill="none" />
                 </svg>
             </div>
             <section id="profile-section">
@@ -71,9 +75,9 @@
             </section>
             <section id="contact-section">
                 <h2><span class="screen-reader-only">Contact Section</span></h2>
-                <div id="photo-container"><img id="photo" src="images/headshot2.jpg"
-                     alt="picture of Lisa"></div>          
-                </div>
+                <button class="photo-container" type="button"><img id="photo" src="images/headshot2.jpg"
+                     alt="picture of Lisa">          
+                </button>
                 <button class="phone"><img class="icon"
                         src="images/smartphone-call_15874.png" alt="phone icon"><br>651.485.0579
                         <span class="tooltip">Click to copy phone to clipboard</span>
@@ -85,7 +89,7 @@
                 <button class="linkedin" 
                         onclick="window.open('https://linkedin.com/in/lisa-donohoo', '_blank')">
                     <img class="icon" src="images/linkedin_1384014.png" 
-                        alt="linkedin icon"><br>linkedin.com/in/lisa-donohoo
+                        alt="linkedin icon"><br>linkedin.com/in/<wbr>lisa-donohoo
                 </button>
                 <button class="github" 
                         onclick="window.open('https://github.com/ldonohoo', '_blank')">
@@ -108,9 +112,9 @@
                     <li>University of Minnesota (Twin Cities), 
                         Bachelor of Science in Computer Science</li>
                 </ul>   
-            </div>  
+            </section>  
             <section id="projects-section">
-                <h2>Projects go here...</h2>
+                <h2>Projects</h2>
             </section>
             <section id="skill-section">
                 <h2>Skills</h2>
