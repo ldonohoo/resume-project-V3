@@ -1,23 +1,96 @@
 /* Lisa Donohoo   resume-v3.css   2-14-2024     */
 
+/*__________________________________________________
+   standard variables & root level properties
+  __________________________________________________*/
+
+  :root {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* colors */
+
+    --contrast-1: #566f98;
+    --contrast-2: #4285F4;
+    --contrast-3: rgb(40, 56, 174);
+    --contrast-4: #485365;
+    --accent-1: #4c1b14;
+    --accent-2: #BC4639;
+    --accent-3: #D4A59A;
+    --accent-4: rgb(72, 46, 46);
+    --accent-5: #7a2d25;
+
+    --background-dark: rgb(36, 36, 36); 
+    --background-alt1-dark: rgb(22, 21, 21);
+    --background-alt2-dark: rgb(52, 51, 51);
+    --background-light: white;
+    --background-alt1-light: #F3E0DC;
+    --background-alt2-light: grey;
+
+    --text-light1: white;
+    --text-light2: rgb(252, 244, 231);
+    --text-light3: rgb(255, 236, 205);
+    --text-dark1: rgb(0, 0, 0);
+    --text-dark2: rgb(154, 154, 154);
+    --text-dark3: rgb(183, 183, 183);
+
+
+
+    /* margins & padding */
+
+
+
+    --md-marg: 0.5rem; 
+
+
+
+}
+
+/*__________________________________________________
+    Initial media queries/accessibility 
+  __________________________________________________*/
+
 
 /* if screen is over a certain width, call wide display layer first
     so it's first in precedence.  Otherwise, call narrrow first. */
-@media (min-width: 50rem) {
+/*
+@media (min-width: 600px) {
     @layer wide-display;
 }
-
-/* narrow display flexbox/grid stuff goes here... */
-@layer narrow-display {  
-    header {
-        background-color: blue;
-    }
+/*
+@media (max-width: 1000px) and (min-width: 600px)  {
+    @layer medium-display;
+}*/
+/*
+@media (max-width: 600px) {
+    @layer narrow-display;
 }
 
-/* wide display flexbox/grid stuff goes here... */
+@layer narrow-display {
+    #visit-counter {
+        background-color:  blue;
+    }
+}
+/*@layer medium-display;
+@layer wide-display;
+
+/* narrow display flexbox/grid stuff goes here... 
+@layer narrow-display {  
+    #visit-counter  {
+
+    }
+}
+*/
+/* medium-wide display flexbox/grid stuff goes here... 
+@layer medium-display {
+    #visit-counter  {
+        background-color: yellow;
+    }
+}*/
+
+/* wide display flexbox/grid stuff goes here... 
 @layer wide-display {
-    header {
-      background-color: green;
+    #visit-counter {
+        background-color: orange;
     }
 
 }
@@ -39,27 +112,584 @@ Don't make animations, sliders, videos, or rapid movement start automatically.
 
 @media (prefers-reduced-motion) {
     footer {
-        color: white;
-    }
-}
-
-/* if user has light mode set on their browser use light color scheme */
-@media (prefers-color-scheme: light) {
-    body {
-        --main-text-color: black;
-        --background-color: beige;
+        color: purple;
     }
 }
 
 
 /* if user has dark mode set on their browser use dark color scheme */
+@media  not (prefers-color-scheme: dark) {
+    body {
+
+        --main-text-color: var(--text-dark2);
+        --alt1-text-color: var(--text-dark1);
+        --alt2-text-color: var(--text-dark3);
+        --main-background-color: var(--background-dark);
+        --alt1-background-color: var(--background-alt1-dark);
+        --alt2-background-color: var(var(--background-alt2-dark))
+
+        background-color: var(--main-background-color);
+        color: var(--main-text-color);
+    }
+
+
+}
+
+/* if user does not have dark mode set, use light */
 @media (prefers-color-scheme: dark) {
     body {
-    --main-text-color: rgb(247, 246, 224);
-    --background-color: rgb(31, 30, 30);
+        --main-text-color: var(--text-dark1);
+        --alt1-text-color: var(--text-light1);
+        --alt2-text-color: var(--text-dark2);
+        --main-background-color: var(--background-light);
+        --alt1-background-color: var(--background-alt1-light);
+        --alt2-background-color: var(--background-alt2-light);
+
+        background-color: var(--main-background-light);
+        color: var(--main-text-color);
+    }
+    #interest-section {
+        background-color: orangered;
     }
 }
 
-ul {
-    list-style-type: none;
+/* 'hide' content off page for sighted users */
+
+.screen-reader-only {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width: 0.1px;
+    height: 0.1px;
+    overflow:hidden;
 }
+
+
+
+/*__________________________________________________
+   main property section
+  __________________________________________________*/
+
+/*---body---*/
+
+
+body {
+    background-color: var(--main-background-color);
+    margin: 0;
+}
+
+/*---general---*/
+
+h2 {
+    width: 100%;
+    color: var(--alt1-text-color);
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/*---header---*/
+
+header {
+    position: sticky;
+    top: 0rem;
+    background-color: var(--main-background-color);
+    z-index: +1;
+}
+
+#config-bar {
+    display: flex;
+    justify-content: flex-end;
+    height: 1.9rem;
+    width: 100%;
+    background-color: var(--contrast-1);
+}
+
+#light-dark-mode, #reduced-motion {
+    position: relative;
+    border: .1rem solid black;
+    border-radius: 50%;
+    background-color: var(--contrast-4);
+    color: var(--text-dark3);
+    box-shadow: .1rem .1rem .3rem black;
+    margin: .2rem .5rem .2rem .1rem;
+}
+
+#title-bar {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin: 0 0 .3rem 0;
+    padding-left: 2rem;
+    color: var(--main-text-color);
+}
+
+#title-bar::first-line {
+    position: relative;
+    font-size: 3.5rem;
+    padding-left: .5rem;
+    font-style: normal;
+}
+
+#visit-counter {
+    position: fixed;
+    top: 3rem;
+    left: 30rem;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 0.5rem solid var(--accent-1);
+    background-color: blue;
+}
+
+.navigation-bar {
+    background-color: var(--accent-5);
+    height: 1.8rem;
+    border-bottom: .1rem solid var(--main-background-color);
+}
+
+.navigation-bar ul {
+    /* changes to display: flex when menu is clicked */
+    display: none;
+    flex-direction: column;
+    gap: .1rem;
+    list-style-type: none;
+    font-size: 1.1rem;
+    height: auto;
+    width: 30%;
+    background-color: var(--accent-1);
+    margin: 0 6%;
+    padding-left: 0;
+}
+
+.navigation-bar li {
+    display: inline-block;
+    border-bottom: .1rem solid var(--main-background-color);
+    padding: .2rem .8rem;
+    margin: 0 .1rem;
+    background-color: var(--accent-1);
+}
+
+.navigation-bar a {
+    text-decoration: none;
+    color: var(--main-text-color);
+}
+
+/* when narrow screen, set width to zero: disappears element */
+/* (this element is for styling only)                       */   
+#style-curve svg {
+    stroke-width: 0rem;
+}
+
+/*---contacts---*/
+
+/* will put in a modal for small screens... */
+#contact-section {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    width: 95%;
+    height: auto;
+    background-color: var(--main-background-color);
+    border: .1rem solid black;
+    z-index: 1;
+}
+
+#contact-section h2 {
+    padding: .5rem 1rem;
+}
+
+#closing-mark {
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+    font-size: 1.6rem;
+}
+
+#contact-section button {
+    width: 100%;
+    min-height: 4rem;
+    font-size: 1rem;
+    text-align: left;
+    color: var(--main-text-color);
+    padding: .5rem 1rem;
+}
+
+#photo { 
+    position: relative;
+    border: .1rem solid var(--accent-1);
+    border-radius: 50%;
+    width: 20%;
+    rotate: -15deg;
+    height: auto;
+}
+
+.icon {
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+    margin: auto .7rem auto .3rem;
+}
+
+/*---profile---*/
+
+#profile-section {
+    position: relative;
+    border: .1rem solid transparent;
+    border-radius: .5rem;
+    outline: 1.1rem solid var(--accent-5);
+    margin: auto;
+    width: 80%;
+    background-color: var(--alt1-background-color);
+    color: var(--main-text-color);
+}
+
+.profile {
+    font-size: large;
+    padding: .3rem 1.5rem;
+    text-align: center;
+    color: var(--alt-text-color);
+}
+
+/*---education---*/
+
+#education-certs-section {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: var(--accent-5);
+    margin: 2rem 0;
+    padding: 1rem .2rem 1rem .2rem;
+}
+
+#education-certs-section li
+ {
+    position: relative;
+    color: var(--alt1-text-color);
+    text-align: left;
+    margin: .7rem;
+}
+
+/*---projects---*/
+
+#projects-section {
+    display: block;
+    background-color: var(--contrast-1);
+    min-height: 5rem;
+    margin: 4rem 0;
+    text-align: center;
+}
+
+#project-button {
+    position: relative;
+    display: inline-block;
+    border: 1rem solid var(--alt1-background-color);
+    border-radius: 50%;
+    width: 10rem;
+    max-width: 30%;
+    min-height: 10rem;
+    margin: -2.5rem auto;
+    background-color: var(--contrast-1);
+    font-size: 1.8rem;
+}
+
+#projects-section > .project {
+    display: none;
+}
+
+/*---skills---*/
+
+#skills-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .4rem .1rem;
+    width: 100%; 
+    height: auto;
+    background-color: var(--accent-5);
+    justify-content: space-around;
+    color: var(--alt1-text-color);
+    padding: 1rem 0 1rem 0;
+}
+
+.skill {
+    width: 22%;
+    min-height: 5rem;
+    font-size: .9rem;
+    font-weight: 700;
+    background-color: var(--accent-5);
+    border: .5rem solid var(--alt1-background-color);
+    border-radius: .5rem;
+    background-color: var(--main-background-color);
+    color: var(--alt2-text-color);
+}
+
+#skills-section p {
+    display: none;
+}
+
+/*---experience---*/
+
+#experience-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 2.5rem 0;
+}
+
+#experience-section h2,
+.exp-detail {
+    position: relative;
+    border: .1rem solid transparent;
+    border-radius: .5rem;
+    outline: 1.1rem solid var(--accent-5);
+    margin: auto;
+    padding-top: .3rem;
+    width: 90%;
+    color: var(--main-text-color);
+}
+#experience-section h2 {
+    width: 30%;
+    padding: .2rem;
+    outline-width: .7rem;
+    background-color: var(--accent-5);
+    color: var(--alt1-text-color);
+}
+.exp-detail {
+    text-align: center;
+}
+.exp-detail p {
+    font-size: large;
+    margin: 1rem -0.1rem -0.1rem  -0.1rem;   
+    border-top: .5rem solid var(--accent-5);
+    padding: .3rem 1.5rem;
+    text-align: center;
+    color: var(--alt-text-color);
+    background-color: var(--alt1-background-color);
+}
+
+/*---interests---*/
+
+#interests-section {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: var(--accent-5);
+    margin: 0 0 1.5rem 0;
+    padding: 1rem 0 1rem 0;
+}
+
+#interests-section ul {
+    position: relative;
+    color: var(--alt1-text-color);
+    text-align: center;
+    list-style-type: none;
+    font-style: italic;
+    margin: .7rem;
+    padding-left: 0;
+}
+
+#interests-section ul::first-line {
+    font-style: normal;
+}
+
+
+/*---footer---*/
+
+footer {
+    background-color: var(--contrast-1);
+    padding: 1rem 0 1rem 2rem;
+    padding-left: 1rem;
+    padding-bottom: .5rem;
+    color: var(--alt1-text-color);
+}
+
+
+
+
+
+/*__________________________________________________
+   animations & hovers
+  __________________________________________________*/
+
+  .navigation-bar a:hover {
+    color: var(--alt1-text-color);
+    background-color: var(--contrast-2);
+}
+
+#config-bar button:hover {
+    background-color: var(--contrast-2);
+    color: var(--alt1-text-color);
+    scale: 1.2;
+}
+
+#project-button:hover {
+    background-color: var(--contrast-2);
+    color: var(--alt1-text-color);
+    scale: 1.05;
+}
+
+/*__________________________________________________
+   hidden elements
+  __________________________________________________*/
+
+.tooltip {
+    display: none;
+
+}
+
+/*__________________________________________________
+    styles for medium width and wider screens
+  __________________________________________________*/
+
+  @media (min-width: 600px)  {
+
+    /* header styles */
+
+    #visit-counter {
+        background-color: orange;
+    }
+    #title-bar {
+        font-size: 1.5rem;
+        padding-left: 2rem;
+    }
+    
+    #title-bar::first-line {
+        font-size: 4.5rem;
+        padding-left: .5rem;
+    }
+    #style-curve {
+        display: block;
+        position: relative;
+        width: 29.7%;
+    }
+    #style-curve > svg {
+        stroke-width: 1rem;
+        stroke: var(--accent-5);
+    }
+
+    /* contact info styles */
+
+    #contact-section {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-wrap:wrap;
+        gap: .6rem;
+        bottom: 20rem;
+    }
+    
+    #photo { 
+        position: relative;
+        border: 1.3rem solid var(--accent-1);
+        border-radius: 50%;
+        width: 10rem; 
+        rotate: -15deg;
+        box-shadow: .5rem .5rem .8rem black;
+        left: -3rem;
+        top: -3.7rem;
+    }
+    
+    #contact-section button {
+        border: 1rem solid var(--accent-1);
+        width: 9rem;
+        max-width: 12rem;
+        min-width: 0;
+        max-height: 10rem;
+        height:fit-content;
+        border-radius: 50%;
+        font-size: .8rem;
+        text-align: center;
+        padding-bottom: 1rem;
+        background-color: var(--accent-3);
+        color: var(--alt1-text-color);
+        box-shadow: .5rem .5rem .8rem black;
+    }
+    
+    .icon {
+        vertical-align: middle;
+        width: 2rem;
+        height: 2rem;
+        padding: .2rem .2rem;
+    }
+    
+    .contact-linkage-graphic {
+        position: relative;
+        top: -45rem;
+        left: 4rem;
+        width: .1rem;
+        min-width: 0rem;
+        height: 40rem;
+        border: .6rem solid var(--accent-2);
+        background-color: var(--accent-2);
+        z-index: -1;
+    }
+
+}
+
+
+
+/*__________________________________________________
+    styles only for very wide screens
+  __________________________________________________*/
+
+@media (min-width: 1000px) {
+    #visit-counter {
+        background-color: purple;
+    };
+}
+#style-curve {
+    display: block;
+    position: relative;
+    width: 29.7%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*__________________________________________________
+   misc junk not yet used repo
+  __________________________________________________
+
+
+  concave curve psuedoelement method:
+
+
+#curved-corner-topright:before {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+  }
+#curved-corner-topright:before {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    border-radius: 50%;
+  }
+#curved-corner-topright:before {
+    top: 0;
+    right: 0;
+    box-shadow: 50px -50px 0 0 red;
+  }
+
+
+
+
+
+  */
