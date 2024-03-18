@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --st0: #D34C3D;
+  --st1: #DB934B;
+  --st2: #EAA13F;
+  --st3: #FCC75D;
+  --st4: #AABC5C;
+  --st5: #8FBF5C;
+  --st6: #71B1B2;
+  --st7: #4E848C;
+  --st8: #476060;
+  --st9: #392C1F;
+    --svg-height: 80vh;
+    --box-width: 10rem;
+    --box-height: 16rem;
+    --box-container-width: 12rem;
+    --box-container-height: 18rem;
+}
+main {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+svg {
+    height: var(--svg-height);
+}
+.box-container {
+    width: var(--box-container-width);
+    height: var(--box-container-height);
+}
+a:link,
+a:visited {
+    opacity: 1;
+}
+a:hover {
+    cursor: grab;
+    opacity: 0.6;
+}
+.info-box {
+    width: 0;
+    height: 0;
+    border: 2pt solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    opacity: 0;
+    transition: all 500ms ease-out;
+}
+p {
+    text-align: center;
+}
+.color-box {
+    width: 6rem;
+    height: 8rem;
+    border: 0.5pt solid black;
+}
+.st0 {
+    background-color: #D34C3D;
+}
+.st1 {
+    background-color: #DB934B;
+}
+.st2 {
+    background-color: #EAA13F;
+}
+.st3 {
+    background-color: #FCC75D;
+}
+.st4 {
+    background-color: #AABC5C;
+}
+.st5 {
+    background-color: #8FBF5C;
+}
+.st6 {
+    background-color: #71B1B2;
+}
+.st7 {
+    background-color: #4E848C;
+}
+.st8 {
+    background-color: #476060;
+}
+.st9 {
+    background-color: #392C1F;
+}
+
+
+
+
