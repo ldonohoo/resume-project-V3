@@ -64,15 +64,235 @@ function spinOutMenu() {
     }
 }
 
+function pieSelected(event) {
+    // pull the wedge number from the class of the target clicked on
+    let wedgeNumber = event.target.getAttribute("class");
+    console.log(`clicking on project ${wedgeNumber}!`);
+}
+
+
+function slideOutMenu() {
+    // create slide out buttons:
+    //      initial positions on y-axis for use in top: styling
+    //      slideAmt is how far to slide
+    //      initial positions are for when slider is currently IN or OUT
+    //      movedirection determines direction to slide button
+    const slideButtons = { 
+        initTopPos: -5,  // top slide up buttons, initial position on y-axis
+        initBotPos: -4,  // bottom slide down buttons, initial position on y-axis
+        slideAmt: 4, 
+        buttons: [
+            {
+            num: 1, 
+            element: document.querySelector('.slide-1'),
+            outProperties: {
+                moveDirection: -1  //negative one is up, positive one is down
+                },
+            inProperties: {
+                moveDirection: +1
+                }
+            },
+            {
+            num: 2, 
+            element: document.querySelector('.slide-2'),
+            outProperties: {
+                moveDirection: -1  //negative one is up, positive one is down
+                },
+            inProperties: {
+                moveDirection: +1
+                }
+            }, 
+            {num: 3, 
+                element: document.querySelector('.slide-3'),
+                outProperties: {
+                    moveDirection: -1  //negative one is up, positive one is down
+                    },
+                inProperties: {
+                    moveDirection: +1
+                    }
+            }, 
+            {num: 4, 
+                element: document.querySelector('.slide-4'),
+                outProperties: {
+                    moveDirection: +1  //negative one is up, positive one is down
+                    },
+                inProperties: {
+                    moveDirection: -1
+                    }
+            }, 
+            {num: 5, 
+                element: document.querySelector('.slide-5'),
+                outProperties: {
+                    moveDirection: +1  //negative one is up, positive one is down
+                    },
+                inProperties: {
+                    moveDirection: -1
+                    }
+            }, 
+            {num: 6, 
+                element: document.querySelector('.slide-6'),
+                outProperties: {
+                    moveDirection: +1  //negative one is up, positive one is down
+                    },
+                inProperties: {
+                    moveDirection: -1
+                    }
+            }, 
+        ]
+    }; // end slideButtons object
+    // used to retrieve correct button data
+    function slideButton(buttonNumber, topButton, slideOut, level) {
+        // uses either slide in or slide out properties on button
+        let prop, initPos;
+        if (slideOut) {
+            prop = 'outProperties';
+        } else {
+            prop = 'inProperties';
+        }
+        if (topButton) {
+            initPos = slideButtons.initTopPos;
+        } else {
+            initPos = slideButtons.initBotPos;
+        }
+        // gets current button object from button number
+        let currButton = 
+            slideButtons.buttons.find(element => element.num === buttonNumber);
+        let newTopPos = initPos +
+            currButton[prop].moveDirection * slideButtons.slideAmt * level;
+        // moves the button to new position
+        currButton.element.style.top = `${newTopPos}rem`;
+    }
+    function slideButtonsInOrder(slideOut) {
+        // check for odd number of buttons
+        let oddNumberButtons = false;
+        if (slideButtons.buttons.length % 2 !== 0) {
+            oddNumberButtons = true;
+         } 
+        // divide number of buttons by 2 to get button groups
+        buttonGroupTop = Math.floor(slideButtons.buttons.length / 2);
+        buttonGroupBottom = buttonGroupTop;
+        // if uneven number of buttons put extra button on bottom
+        if (oddNumberButtons) {
+           buttonGroupBottom++;
+        } 
+        let buttonsToSlide, bottomNum;
+        if (slideOut) {
+            // go through each layer of buttons 
+            //   (use bottom group as it can have one more button)
+            for (let slideLayer=1; slideLayer<=buttonGroupBottom; slideLayer++) {
+                // slide one less button each layer
+                bottomNum = slideButtons.buttons.length;
+                buttonsToSlide = buttonGroupBottom - slideLayer + 1;
+                // for each layer, slide out buttons
+                for (let topNum=1; topNum<=buttonsToSlide; topNum++) {
+                    // set slide level
+                    level = slideLayer;
+                    // get bottom button
+                    // slide up buttons in layer
+                    if (oddNumberButtons && topNum === 1) {
+                        // <skip sliding out top button if odd # of buttons>
+                        // slide out bottom button
+                        slideButton(buttonNum, false, slideOut, level);
+                    } else {
+                    // slide out top button
+                    slideButton(topNum, true, slideOut, level);
+                    // slide out bottom button
+                    slideButton(bottomNum, false, slideOut, level);
+                    }
+                    bottomNum--;
+                } // end go through buttons for each layer
+            } // end go through layers of buttons to slide
+        } else {  // else if sliding OUT
+            // go through each layer of buttons 
+            //   (use bottom group as it can have one more button)
+            for (let slideLayer=buttonGroupBottom; slideLayer>=1; slideLayer--){
+                // slide one less button each layer
+                bottomNum = slideButtons.buttons.length;
+                buttonsToSlide = slideLayer;
+                // for each layer, slide in buttons
+                for (topNum=1; topNum<=buttonsToSlide; topNum++) {
+                    // set slide level
+                    level = buttonsToSlide - slideLayer + 1;
+                     // slide up buttons in layer
+                     if (oddNumberButtons && topNum === 1) {
+                        // <skip sliding out in button if odd # of buttons>
+                        // slide in bottom button
+                        slideButton(buttonNum, false, slideOut, level);
+                    } else {
+                    // slide in top button
+                    slideButton(topNum, true, slideOut, level);
+                    // slide in bottom button
+                    slideButton(bottomNum, false, slideOut, level);
+                    }
+                    bottomNum--;
+                } // end go through buttons for each layer
+            } // end go through layers of buttons to slide
+        } // end if (slideOut) 
+    }  // end slideButtonsInOrder function  
+    
+    // --------slideOutMenu main logic-------------
+    let projectElement = document.getElementById("project-container");
+    let slideOut = projectElement.classList.contains("slide-out-retracted");
+    slideButtonsInOrder(slideOut);
+    // flip the slide-out-retracted class 
+    projectElement.classList.toggle("slide-out-retracted");
+} // end function slideOutMenu
+
+
+
+
+
+
+
+
+    // if (slideOut) {
+        
+    //     // slide out first level
+    //     // (button number, true if Out, level)
+    //     slideButton(1, slideOut, 1);  // slide buttons 1-3, 1 position UP
+    //     slideButton(2, slideOut, 1); 
+    //     slideButton(3, slideOut, 1);  
+    //     slideButton(6, slideOut, 1);  // slide buttons 4-6, 1 position DOWN
+    //     slideButton(5, slideOut, 1);
+    //     slideButton(4, slideOut, 1);
+    //     // slide out second level
+    //     slideButton(1, slideOut, 1);  // slide buttons 1 & 2, 1 position UP
+    //     slideButton(2, slideOut, 1); 
+    //     slideButton(6, slideOut, 1);  // slide buttons 5 & 6, 1 position DOWN
+    //     slideButton(5, slideOut, 1);
+    //     // slide out third level
+    //     slideButton(1, slideOut, 1);  // slide button 1, 1 position UP
+    //     slideButton(6, slideOut, 1);  // slide button 6, 1 position DOWN
+    // } else {
+    //     slideButton(1, slideOut, 1);  // slide button 1, 1 position UP
+    //     slideButton(6, slideOut, 1);  // slide button 6, 1 position DOWN
+    //     slideButton(1, slideOut, 1);  // slide buttons 1 & 2, 1 position UP
+    //     slideButton(2, slideOut, 1); 
+    //     slideButton(6, slideOut, 1);  // slide buttons 5 & 6, 1 position DOWN
+    //     slideButton(5, slideOut, 1);
+    //     slideButton(1, slideOut, 1);  // slide buttons 1-3, 1 position UP
+    //     slideButton(2, slideOut, 1); 
+    //     slideButton(3, slideOut, 1);  
+    //     slideButton(6, slideOut, 1);  // slide buttons 4-6, 1 position DOWN
+    //     slideButton(5, slideOut, 1);
+    //     slideButton(4, slideOut, 1);
+    // }
+
+
+
+
+
+
+/*
 function slideOutMenu() {
 
     // functions for sliding out project buttons
     //      positions are initial y-axis positions of 
     function slideInnerLayer(topInitPos, bottomInitPos, buttonHeight, delay) {
-        setTimeout(() => { 
+        // setTimeout(() => { 
             // move button positions to initial position MINUS button height (UP)
             let topPos = topInitPos - buttonHeight;
-            menuItem1.style.top = `${topPos}rem`;
+             //negative one is up, positive one is down
             menuItem2.style.top = `${topPos}rem`;
             menuItem3.style.top = `${topPos}rem`; // this one is visible 
             // move button Positions to initial position PLUS button height (DOWN)
@@ -80,10 +300,10 @@ function slideOutMenu() {
             menuItem4.style.top = `${bottomPos}rem`;  // this one is visible 
             menuItem5.style.top = `${bottomPos}rem`;
             menuItem6.style.top = `${bottomPos}rem`;
-        }, delay);
+        // }, delay);
     }  // end slideInnerLayer
     function slideMiddleLayer(topInitPos, bottomInitPos, buttonHeight, delay) {
-    setTimeout(() => { 
+    // setTimeout(() => { 
         //slide in/out second layer
         // move button positions to initial position MINUS 2 x button height (UP)
         let topPos = topInitPos - (buttonHeight * 2);
@@ -93,17 +313,17 @@ function slideOutMenu() {
         let bottomPos = bottomInitPos + (buttonHeight * 2);
         menuItem5.style.top = `${bottomPos}rem`;
         menuItem6.style.top = `${bottomPos}rem`; // this one is visible 
-    }, delay);
+    // }, delay);
     } // end slideMiddleLayer
     function slideOuterLayer(topInitPos, bottomInitPos, buttonHeight, delay) {
-    setTimeout(() => { 
+    // setTimeout(() => { 
         // move button positions to initial position MINUS 3 x button height (UP)
         let topPos = topInitPos - (buttonHeight * 3);
         menuItem1.style.top = `${topPos}rem`; // this one is visible 
         // move button Positions to initial position PLUS 3 x button height (DOWN)
         let bottomPos = bottomInitPos + (buttonHeight * 3);
         menuItem6.style.top = `${bottomPos}rem`; // this one is visible 
-    }, delay);
+    // }, delay);
     } // end slideOuterLayer
 
     // MAIN LOGIC for slideOutMenu:
@@ -142,12 +362,7 @@ function slideOutMenu() {
         slideInnerLayer(topInitPos, bottomInitPos, buttonHeight, 1);
     }
 } // end slideOutMenu
-
-function pieSelected(event) {
-    // pull the wedge number from the class of the target clicked on
-    let wedgeNumber = event.target.getAttribute("class");
-    console.log(`clicking on project ${wedgeNumber}!`);
-}
+*/
 
 
 
@@ -165,3 +380,4 @@ function pieSelected(event) {
     // console.log(slide2);
     // console.log(slide5);
     // console.log(slide6);
+
