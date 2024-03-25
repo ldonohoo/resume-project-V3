@@ -175,7 +175,7 @@ function slideOutMenu() {
         if (oddNumberButtons) {
            buttonGroupBottom++;
         } 
-        let buttonsToSlide, bottomNum;
+        let buttonsToSlide, bottomNum, aTopButton;
         if (slideOut) {
             // go through each layer of buttons 
             //   (use bottom group as it can have one more button)
@@ -192,12 +192,15 @@ function slideOutMenu() {
                     if (oddNumberButtons && topNum === 1) {
                         // <skip sliding out top button if odd # of buttons>
                         // slide out bottom button
-                        slideButton(buttonNum, false, slideOut, level);
+                        aTopButton = false;
+                        slideButton(buttonNum, aTopButton, slideOut, level);
                     } else {
                     // slide out top button
-                    slideButton(topNum, true, slideOut, level);
+                    aTopButton = true;
+                    slideButton(topNum, aTopButton, slideOut, level);
                     // slide out bottom button
-                    slideButton(bottomNum, false, slideOut, level);
+                    aTopButton = false;
+                    slideButton(bottomNum, aTopButton, slideOut, level);
                     }
                     bottomNum--;
                 } // end go through buttons for each layer
